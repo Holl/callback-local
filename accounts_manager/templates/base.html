@@ -1,0 +1,81 @@
+{% load i18n %}
+{% load staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <title>{% block title %}Callback{% endblock %}</title>
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href='{% static "css/base.css"%}'>
+</head>
+
+<body>
+    <div id="header">
+    {% block header %}
+
+    <div class="header-list">
+    <ul>
+    <li><a id="logo" href="{% url 'index' %}">{% trans "CALLBACK" %}</a></li>
+	<li><a href="{% url 'news' %}">{% trans "News" %}</a></li>
+    {% if user.is_authenticated %}
+    <li><a href="{% url 'audition' %}">{% trans "Auditions" %}</a></li>
+    {% endif %}
+    {% if user.producer %}
+    <li><a href="{% url 'audition_builder' %}">{% trans "Create" %}</a></li>
+    {% endif %}
+    <li><a href="{% url 'about' %}">{% trans "About" %}</a></li>
+    <li><a href="{% url 'index' %}">{% trans "Contact" %}</a></li>
+    </ul>
+    </div>
+    <div class="login-list">
+    <ul class="login-ul">
+	{% if user.is_authenticated %}
+
+	    {% if user.is_actor %}
+           <li> <a class="profileButton" href="/audition/#/profile/{{user.actor.id}}">{{ user.username }}</a>
+               <ul>
+                    <li> <a href="/audition/#/profile/{{user.actor.id}}">Profile</a>
+                    <li> <a href="{% url 'profile_builder' %}">{% trans "Edit Profile" %}</a></li>
+                    <li> <a href="{% url 'logout' %}">{% trans "Log out" %}</a></li>
+	                <li><a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a></li>
+               </ul>
+           </li>
+        {% else %}
+            <li><a class="profileButton" href="/audition/#/{{user.producer.id}}">{{ user.username }}</a>
+                <ul>
+                    <li><a href="{% url 'production_profile_builder' %}">{% trans "Profile" %}</a></li>
+                    <li> <a href="{% url 'profile_builder' %}">{% trans "Edit Profile" %}</a></li>
+                    <li> <a href="{% url 'logout' %}">{% trans "Log out" %}</a></li>
+	                <li><a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a></li>
+                </ul>
+            </li>
+        {% endif %}
+
+	{% else %}
+	<li><a href="{% url 'login_page' %}">{% trans "Log in" %}</a></li>
+	<li><a href="{% url 'signup' %}">{% trans "Sign Up" %}</a></li>
+	{% endif %}
+    </ul>
+    </div>
+    <div class="headerCover">
+
+    </div>
+
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <div id="footer">
+        {% block footer %}
+
+
+        {% endblock %}
+    </div>
+</body>
+
+</html>

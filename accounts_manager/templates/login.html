@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n %}
+{%  load static %}
+
+{% block content %}
+<link rel="stylesheet" href='{% static "css/login.css"%}'>
+    <div class="database-div">
+    <form method="post">
+    <p> Sign in! </p>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" name="submit" value="Submit" />
+    </form>
+
+    <p>New?  Register <a href="{% url 'signup' %}">here!</a></p>
+    <div>
+
+{% endblock %}
+

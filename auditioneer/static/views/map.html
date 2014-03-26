@@ -1,0 +1,51 @@
+
+
+<div class="wrapper">
+
+    <google-map center="map.center" zoom="map.zoom" draggable="true">
+            <marker ng-repeat="m in markers" coords="m"  ng-click="m.showWindow = true" >
+                <window show='hide' isIconVisibleOnClick='false'>
+                    <div class="window-styler" style="font-family: Asap;">
+                        Name: {{ m.name }} <br>
+                        Date/Time: {{ m.audition_date|date:"DATE_FORMAT" }} <br>
+                        Parts:
+                        <!-- Inline style inc, don't kill me code gods -->
+                        <div ng-repeat="p in m.parts">
+                            {{ p.name }}
+                            {{ p.gender }}
+                        </div>
+                        <ul style="list-style: none;">
+                            <li class="audition-buttons">
+                                <a  href="#/{{ m.id }}">More Info</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </window>
+            </marker>
+    </google-map>
+
+
+
+
+
+</div>
+<div class="table">
+    <div class="cell" ng-repeat="m in markers">
+       <h3>{{ m.name }}</h3>
+       <h4>{{ m.audition_date }}</h4>
+       <p>{{ m.description }}</p>
+        <p>Parts: {{ m.parts.length }}</p>
+        <div ng-repeat="p in m.parts">
+        {{ p.name }}
+        {{ p.gender }}
+        </div>
+        <br>
+        <ul>
+            <li class="audition-buttons">
+                <a  href="#/{{ m.id }}">More Info</a>
+            </li>
+        </ul>
+
+    </div>
+</div>
