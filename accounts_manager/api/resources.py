@@ -58,6 +58,7 @@ class AuditionResource(ModelResource):
     production = ToOneField('accounts_manager.api.resources.ProductionResource', 'production_user', full=True, null=True)
     parts = ToManyField('accounts_manager.api.resources.PartResource', 'parts', null=True, full=True)
     is_the_producer = fields.BooleanField()
+    simple_date = fields.CharField()
 
     class Meta:
         queryset = Audition.objects.all()
@@ -74,6 +75,10 @@ class AuditionResource(ModelResource):
         except ProductionProfile.DoesNotExist:
             return False
         return bundle.obj.production_user == bundle.request.user.producer
+
+    def dehydrate(self, bundle):
+        bundle.data['simple_date'] = str(bundle.data['audition_date'])[:-6]
+        return bundle.data
 
 
 class PartResource(ModelResource):

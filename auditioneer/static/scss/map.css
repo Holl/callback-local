@@ -27,7 +27,10 @@
 .wrapper {
   position: fixed;
   width: 58%;
-  display: inline-block; }
+  display: inline-block;
+  top:36px;
+  left: 0px;
+}
 
 #map-canvas {
   height: 200px;
