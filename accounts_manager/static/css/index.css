@@ -1,8 +1,9 @@
 body {
-  background-image: url("http://i.imgur.com/BovdpYL.jpg");
+  background-image: url("/static/img/backup_background.jpg");
   width: 100%;
   height: 100%;
-  background-size: 100%; }
+  background-size: 100%;
+  background-repeat: no-repeat; }
 
 .landing_div {
   color: whitesmoke;

@@ -38,7 +38,7 @@ def part_builder(request, audition_id):
             AUD = Audition.objects.get(id=audition_id)
             submission.audition = AUD
             submission.save()
-            return redirect('/')
+            return redirect('/audition/#/')
         else:
             return redirect('/login')
     else:

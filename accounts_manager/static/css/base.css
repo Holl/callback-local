@@ -69,6 +69,15 @@ html, body {
   float: none;
   display: block; }
 
+.submit-buttons {
+  background-color: #c62d1f;
+  color: whitesmoke;
+  border: solid 1px;
+  width: 100px;
+  margin-left: 28%;
+  height: 30px;
+  margin-right: auto; }
+
 .apply-buttons, #actor-side a, #producer-side a {
   background-color: #f24537;
   -webkit-border-top-left-radius: 0px;

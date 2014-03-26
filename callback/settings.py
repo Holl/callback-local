@@ -98,6 +98,6 @@ EMAIL_FILE_PATH = 'emails/'
 
 AUTH_USER_MODEL = 'accounts_manager.MainUser'
 
-MEDIA_ROOT = "/Users/kevinholloway/Desktop/main_projects/callback/media/"
+MEDIA_ROOT = "/Users/kevinholloway/Desktop/Backups/callback/media/"
 
 TASTYPIE_DATETIME_FORMATTING = 'rfc-2822'
